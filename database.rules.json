@@ -1,0 +1,26 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "users": {
+      ".read": true,
+      ".write": true,
+      ".indexOn": ["name", "username", "email"],
+        "professor":{
+          ".indexOn": ["name"]
+        },
+        "funcionario":{
+          ".indexOn": ["name"]
+        },
+        "aluno":{
+          ".indexOn": ["name"]
+        }  
+    },
+    "cursos": {
+      ".indexOn": ["nome"]
+    },   
+    "faculdades": {
+      ".indexOn": ["nome"]
+    }
+  }
+}

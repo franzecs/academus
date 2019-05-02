@@ -1,0 +1,39 @@
+<!-- Modal -->
+<div class="modal fade" id="ikUpload" tabindex="-1" role="dialog" aria-labelledby="ikUploadLabel" 
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <hr/>
+      <div class="modal-body text-center">
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-12 text-center">
+        <div *ngIf="currentFileUpload" class="progress" style="width: 400px">
+          <div class="progress-bar progress-bar-info progress-bar-striped"
+                role="progressbar" attr.aria-valuenow="{{progress.percentagem}}"
+                aria-valuemin="0" aria-valuemax="100"
+                [ngStyle]="{width: progress.percentagem+'%'}">
+                {{progress.percentagem}}%</div>
+        </div>
+      <hr/>  
+        <div class="col-xl-12 text-center">
+          <img class="img-fluid img-thumbnail" class="form-control" [src]="preview" style="width: 200px; height: 200px;"/>
+          <div class="fileUpload btn btn-primary pull-left">
+            <span>Selecione...</span>  
+            <input type="file" class="upload" name="file" accept="image/*" style="width: 200px;"
+                  (change)="selectFile($event)" capture="camera"/>
+          </div>      
+        </div>
+
+      </div>
+      </div>
+      </div>
+      </div>  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button class="btn btn-success" [disabled]="!selectedFiles"
+            (click)="upload()">Upload</button>
+        </div>  
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="container" style="margin: 20%,auto;">
+  <div class="row">
+    <div class="col-sm-12 d-flex justify-content-center">
+
+      <div class="card-transparente" style="width: 20rem; margin-top: 100px;">
+        <div class="card-login">
+          <div class="card-title" style="background: white;">
+            <img src="../../../../assets/img/logo_ac_red.png" alt="academus_logo" class="img-responsive img-thumbnail bg-transparent" />
+          </div>
+
+          <form [formGroup]="signinForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+            <div class="form-group">
+              <input type="email" aria-label="email" class="form-control" placeholder="E-mail" formControlName="email">
+              <small *ngIf="!signinForm.get('email').valid && signinForm.get('email').touched" class="form-text text-danger fa fa-exclamation-triangle">
+                Email inválido!</small>
+            </div>
+            <div class="form-group">
+              <input type="password" aria-label="senha" class="form-control" placeholder="Senha" formControlName="password">
+              <small *ngIf="!signinForm.get('password').valid && signinForm.get('password').touched" class="form-text text-danger fa fa-exclamation-triangle">
+                Senha inválida!</small>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm btn-block sombra-btn" [disabled]="!signinForm.valid">Entrar</button>
+          </form>
+          <hr />
+          <p class="small text-danger text-center" *ngIf="message" style="background: white">{{message}}</p>
+          <hr />
+        </div>
+      </div>
+      <modal-message></modal-message>
+    </div>
+  </div>
+</div>

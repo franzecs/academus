@@ -1,0 +1,14 @@
+<div *ngIf="menus === undefined" class="contentChart">
+  <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+  </svg>
+</div>
+<div *ngFor="let menu of menus" style="padding-left: 10px; padding-right: 10px">
+  <a [routerLink]="[menu.url]">
+    <button class="btn btn-{{menu.button}} btn-sm btn-block sombra-btn" type="button">
+      <i class="{{menu.img}}"></i>
+      <span> {{menu.titulo}}</span> 
+    </button>
+  </a>
+  <hr>
+</div>

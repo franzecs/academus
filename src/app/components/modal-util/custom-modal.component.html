@@ -1,0 +1,19 @@
+<div *ngIf="MessageIsVisible" class="modal fade" id="customModal" tabindex="-1" role="dialog" aria-labelledby="altModalLabel"
+aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                  {{header}}
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <ng-content select="[body]"></ng-content>
+            </div>
+            <div class="modal-footer">
+                <ng-content select="[footer]"></ng-content>
+            </div>
+        </div>
+    </div>
+</div>

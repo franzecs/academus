@@ -1,0 +1,37 @@
+<!--PAGINAÇÃO-->
+<div class="box-footer clearfix" *ngIf="pages !=undefined">
+  <ul class="pagination justify-content-center">
+
+    <li class="page-item" *ngIf=" page+1 != 1" title="primeiro">
+      <a href="#" (click)="setPage(0, $event)" class="page-link">
+        <span aria-hidden="true" class="fa fa-fast-backward"></span>
+      </a>
+    </li>
+
+    <li class="page-item" *ngIf="page+1 !=1" title="anterior">
+      <a href="" (click)="setPreviousPage($event)" class="page-link">
+        <span aria-hidden="true" class="fa fa-backward"></span>
+      </a>
+    </li>
+
+    <li *ngFor="let p of pages; let i = index" [ngClass]="{'active': i===page}" class="page-item">
+      <a href="#" (click)="setPage(i, $event)" class="page-link">
+        {{i+1}}
+      </a>
+    </li>
+    <li class="page-item" *ngIf=" page != pages.length-1" title="próximo">
+      <a href="" (click)="setNextPage($event)" class="page-link">
+        <span aria-hidden="true" class="fa fa-forward"></span>
+      </a>
+    </li>
+    <li class="page-item" *ngIf=" page != pages.length-1" title="último">
+      <a href="#" (click)="setPage(pages.length-1, $event)" class="page-link">
+        <span aria-hidden="true" class="fa fa-fast-forward"></span>
+      </a>
+    </li>
+  </ul>
+  <p>Total de registros: <strong>{{ totalElements }}</strong>,
+    pág. <strong>{{ page +1 }}</strong>
+    de <strong>{{ pages.length }}</strong>.</p>
+</div>
+<!--PAGINAÇÃO-->

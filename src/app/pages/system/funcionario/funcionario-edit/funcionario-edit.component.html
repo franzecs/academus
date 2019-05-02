@@ -1,0 +1,74 @@
+<div class="card">
+  <div class="page-top sombra">
+    Cadastro de Funcionário
+    <button class="btn btn-warning btn-sm btn-pdr float-right sombra-btn" (click)="return()" title="voltar"><i
+        class="fas fa-arrow-circle-left"></i></button>
+  </div>
+  <div class="card-body">
+    <div class="col-xs-12 col-md-12">
+      <div class="row">
+
+        <div class="col-xs-12 col-md-2" *ngIf="funcionario !== undefined">
+          <img [src]="funcionario.photo || './../../../../../assets/img/prod.jpg'" class="img-fluid img-thumbnail"
+            style="width: 150px;" />
+        </div>
+
+        <div class="col-xs-12 col-md-8">
+          <form [formGroup]="funcionarioForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+            <div class="col-xs-12">
+              <div class="row">
+
+                <div class="input-group input-group-sm col-xs-12 col-md-3 min-margin-bottom">
+                  <ik-input-group [label]="'Funcional'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="identificador" IkMask="99999-6" />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                  <ik-input-group [label]="'Nome'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="name" ikUpCase />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-3 min-margin-bottom">
+                  <ik-input-group [label]="'UserName'"></ik-input-group>
+                  <input type="text" class="form-control" maxlength="20" formControlName="username" />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                  <ik-input-group [label]="'Setor'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="setor" />
+                </div>
+
+                <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                  <ik-input-group [label]="'E-mail'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="email" [attr.disabled]=true />
+                </div>
+
+                <div class="input-group input-group-sm col-xs-12 col-md-3 min-margin-bottom">
+                  <ik-input-group [label]="'Celular'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="celular" IkMask="(99) 99999-9999" />
+                </div>
+
+                <div class="input-group input-group-sm col-xs-12 col-md-9 min-margin-bottom">
+                  <ik-input-group [label]="'Endereço'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="endereco" uppercase />
+                </div>
+
+              </div>
+            </div>
+            <hr>
+            <progress-bar *ngIf="uploadProgress" [progress]="uploadProgress"></progress-bar>
+            <input type="file" accept="image/*" (change)="onPhoto($event)" *ngIf="funcionario !== undefined">
+            <button type="submit" class="btn btn-primary btn-sm sombra-btn"
+              [disabled]="!funcionarioForm.valid">Salvar</button>
+          </form>
+        </div>
+        <div class="col-xs-12 col-md-2">
+          <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+            <ik-input-group [label]="'Authorizações'"></ik-input-group>
+            <app-checkbox-group [options]="userAuth" (toggle)="onRolesChange($event)"></app-checkbox-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <modal-message>
+  </modal-message>
+</div>

@@ -1,0 +1,265 @@
+<div class="card">
+  <div class="page-top sombra">
+    Cadastro de Curso
+    <button class="btn btn-warning btn-pdr btn-sm float-right sombra-btn" (click)="return()" title="voltar">
+      <i class="fas fa-arrow-circle-left"></i>
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="col-xs-12 col-md-12">
+      <div class="row">
+        <div class="col-xs-12 col-md-2" *ngIf="curso !== undefined">
+          <img [src]="curso.url_logo || './../../../../../assets/img/prod.jpg'" class="img-fluid img-thumbnail"
+            style="width: 150px;" />
+        </div>
+
+        <div class="col-xs-12 col-md-10">
+          <form [formGroup]="cursoForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+            <div class="col-xs-12">
+              <div class="row">
+                <div class="input-group input-group-sm col-xs-12 col-md-3 min-margin-bottom">
+                  <ik-input-group [label]="'Faculdade'"></ik-input-group>
+                  <select class="form-control" id="faculdade" formControlName="faculdadeId">
+                    <option *ngFor="let faculdade of faculdades" [ngValue]="faculdade.$key">{{ faculdade.sigla }}
+                    </option>
+                  </select>
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-4 min-margin-bottom">
+                  <ik-input-group [label]="'Nome'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="nome" />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-5 min-margin-bottom">
+                  <ik-input-group [label]="'Portaria'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="portaria" />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                  <ik-input-group [label]="'Coordenador'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="coordenador" />
+                </div>
+
+                <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                  <ik-input-group [label]="'Duração'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="duracao" />
+                </div>
+
+                <div class="input-group input-group-sm col-xs-12 col-md-4 min-margin-bottom">
+                  <ik-input-group [label]="'Horário Segunda'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="segunda" IkMask="99:99-99:99" />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-4 min-margin-bottom">
+                  <ik-input-group [label]="'Horário Terça'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="terca" IkMask="99:99-99:99" />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-4 min-margin-bottom">
+                  <ik-input-group [label]="'Horário Quarta'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="quarta" IkMask="99:99-99:99" />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-4 min-margin-bottom">
+                  <ik-input-group [label]="'Horário Quinta'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="quinta" IkMask="99:99-99:99" />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-4 min-margin-bottom">
+                  <ik-input-group [label]="'Horário Sexta'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="sexta" IkMask="99:99-99:99" />
+                </div>
+
+                <!-- modal details-->
+                <div class="modal fade" id="details" tabindex="-1" role="dialog" aria-labelledby="altModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="altModalLabel">Detalhes do curso</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+
+                        <div class="input-group input-group-sm col-xs-12 col-md-12 min-margin-bottom">
+                          <ik-input-group [label]="'Atividades'"></ik-input-group>
+                          <textarea rows="5" class="form-control" formControlName="atividades"></textarea>
+                        </div>
+                        <div class="input-group input-group-sm col-xs-12 col-md-12 min-margin-bottom">
+                          <ik-input-group [label]="'Mercado'"></ik-input-group>
+                          <textarea rows="5" class="form-control" formControlName="mercado"></textarea>
+                        </div>
+                        <div class="input-group input-group-sm col-xs-12 col-md-12 min-margin-bottom">
+                          <ik-input-group [label]="'Sobre'"></ik-input-group>
+                          <textarea rows="5" class="form-control" formControlName="sobre"></textarea>
+                        </div>
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <hr />
+            <progress-bar *ngIf="uploadProgress" [progress]="uploadProgress"></progress-bar>
+            <div class="row">
+              <div class="col-xs-12 col-sm-2" style="padding: 2px;">
+                <button type="button" class="btn btn-outline-primary btn-sm btn-block sombra-btn">
+                  <input type="file" accept="image/*" (change)="onPhoto($event)" *ngIf="curso !== undefined"
+                    style="max-width: 20px;" />
+                  <i class="fas fa-upload"></i>
+                </button>
+              </div>
+
+              <div class="col-xs-12 col-sm-2" style="padding: 2px;">
+                <button type="button" class="btn btn-secondary btn-block float-right sombra-btn"
+                  title="Detalhes do Curso" data-toggle="modal" data-target="#details">
+                  <span class="d-none d-md-inline">Detalhes</span>
+                  <i class="fas fa-file-signature"></i>
+                </button>
+              </div>
+              <div class="col-xs-12 col-sm-3" style="padding: 2px;">
+                <button type="button" class="btn btn-warning btn-block float-right sombra-btn"
+                  title="Documentos Disponíveis" data-toggle="modal" data-target="#documents">
+                  <span class="d-none d-md-inline">Documentos</span>
+                  <i class="fas fa-archive"></i>
+                </button>
+              </div>
+              <div class="col-xs-12 col-sm-3" style="padding: 2px;">
+                <button type="button" class="btn btn-info btn-block float-right sombra-btn" title="Professores do Curso"
+                  data-toggle="modal" data-target="#teachers">
+                  <span class="d-none d-md-inline">Professores</span>
+                  <i class="fas fa-user-friends"></i>
+                </button>
+              </div>
+              <div class="col-xs-12 col-sm-2" style="padding: 2px;">
+                <button type="submit" class="btn btn-success btn-block float-right sombra-btn"
+                  [disabled]="!cursoForm.valid">
+                  <span class="d-none d-md-inline">Salvar</span>
+                  <i class="fas fa-check"></i>
+                </button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <modal-message></modal-message>
+</div>
+
+<div class="modal fade" id="documents" tabindex="-1" role="dialog" aria-labelledby="altModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="altModalLabel">Documentos disponíveis</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="container-fluid">
+            <div class="row align-items-end">
+              <div class="col-5">
+                <label for="recipient-name" class="col-form-label">Descrição:</label>
+                <input type="description" class="form-control" id="description" #description />
+              </div>
+              <div class="col-5">
+                <label for="message-text" class="col-form-label">URL</label>
+                <input type="url" class="form-control" id="url" #url />
+              </div>
+              <div class="col-2 ">
+                <button type="button" class="btn btn-sm btn-primary btn-block"
+                  (click)="saveDoc(description.value, url.value)">
+                  Incluir
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <hr />
+        <span *ngFor="let doc of documents">
+          <div class="input-group min-margin-bottom">
+            <input [value]="doc.description" [attr.disabled]="true" />
+            <div class="col-6">
+              <a href="{{ doc.url }}" target="_blanck">
+                <button class="btn btn-sm btn-outline-success" type="button">
+                  Visualizar
+                  <i class="fas fa-external-link-alt"></i>
+                </button>
+              </a>
+              <button class="btn btn-sm btn-outline-danger" type="button" (click)="deleteDoc(doc.$key)"
+                style="margin-left: 5px;">
+                deletar
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="teachers" tabindex="-1" role="dialog" aria-labelledby="altModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="altModalLabel">Professores do curso</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="padding-top: 5px;">
+        <form [formGroup]="frmProf" (ngSubmit)="saveTeacher(frmProf.value.professor)" class="form-inline ">
+          <div class="form-group">
+            <select class="form-control" id="professores" formControlName="professor" title="Selecione o Professor">
+              <option *ngFor="let professor of professores" [ngValue]="professor">
+                {{professor.name}}</option>
+            </select>
+            <button type="submit" class="btn btn-success sombra-btn" style="margin-left: 5px">Incluir</button>
+          </div>
+        </form>
+        <hr style="margin: 5px 0;" />
+        <table class="table table-striped table-bordered table-sm" id="tablebx">
+          <thead>
+            <tr>
+              <th>Funcional</th>
+              <th>Nome</th>
+              <th>Titulação</th>
+              <th>Opções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let teacher of curseTeachers">
+              <td>{{teacher.identificador}}</td>
+              <td>{{teacher.name}}</td>
+              <td>{{teacher.titulacao}}</td>
+              <td class="align-items-center">
+                <button class="btn btn-sm btn-outline-danger" type="button" (click)="deleteTeacher(teacher.$key)">
+                  <i class="fas fa-trash"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-warning" type="button">
+                  <i class="fas fa-external-link-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

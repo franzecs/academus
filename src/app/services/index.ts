@@ -1,0 +1,9 @@
+export { AuthService } from './auth.service';
+export { BaseService } from './base.service';
+export { ConsultaCepService } from './cep.service';
+export { CursoService } from './curso.service';
+export { FaculdadeService } from './faculdade.service';
+export { FuncionarioService } from './funcionario.service';
+export { ProfessorService } from './professor.service';
+export { UserService } from './user.service';
+export { UtilityService } from './utility.service';

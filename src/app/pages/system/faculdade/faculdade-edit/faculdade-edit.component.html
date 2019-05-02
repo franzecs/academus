@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="page-top sombra">
+    Cadastro de Faculdades
+    <button class="btn btn-warning btn-pdr btn-sm float-right sombra-btn" (click)="return()" title="voltar">
+      <i class="fa fa-arrow-circle-left"></i>
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="col-xs-12 col-md-12">
+      <div class="row">
+
+        <div class="col-xs-12 col-md-2" *ngIf="faculdade !== undefined">
+          <img [src]="faculdade.url_logo || './../../../../../assets/img/prod.jpg'" class="img-fluid img-thumbnail"
+            style="width: 150px;" />
+        </div>
+
+        <div class="col-xs-12 col-md-10">
+
+          <form [formGroup]="facForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+            <div class="col-xs-12">
+              <div class="row">
+
+                <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                  <ik-input-group [label]="'Nome'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="nome" />
+                </div>
+
+                <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                  <ik-input-group [label]="'Mantenedora'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="mantenedora" />
+                </div>
+
+                <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                  <ik-input-group [label]="'Portaria'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="portaria" />
+                </div>
+
+                <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                  <ik-input-group [label]="'Sigla'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="sigla" />
+                </div>
+              </div>
+            </div>
+            <hr>
+            <progress-bar *ngIf="uploadProgress" [progress]="uploadProgress"></progress-bar>
+            <input type="file" accept="image/*" (change)="onPhoto($event)" *ngIf="faculdade !== undefined">
+            <button type="submit" class="btn btn-primary btn-sm sombra-btn" [disabled]="!facForm.valid">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <modal-message></modal-message>
+</div>

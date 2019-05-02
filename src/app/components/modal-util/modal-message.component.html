@@ -1,0 +1,49 @@
+<div *ngIf="MessageIsVisible && type === 'delete'" class="modal fade show" id="myModal" role="dialog"
+    style="display: block; background:rgba(0,0,0,.4); z-index: 1000;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="color: red"><span class="fas fa-exclamation-triangle"> Excluir?</span>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" (click)="hideMsg()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>{{Message}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="hideMsg()">Não</button>
+                <button type="button" class="btn btn-primary" (click)="Confirmar()">Sim </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="MessageIsVisible && type !== 'delete'" class="modal fade show" id="myModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body  alert alert-{{type}}" style="margin-bottom: 0;">
+                <button type="button" class="close" data-dismiss="modal" (click)="hideMsg()">&times;</button>
+                <p><span class="fas fa-exclamation-triangle"></span> {{Message}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="spinner" class="modal fade show" id="myModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card-transparente" style="border: none;">
+            <div class="modal-body" style="margin-bottom: 0;">
+                <div class="contentChart">
+                    <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">
+                        </circle>
+                    </svg>
+                </div>
+                <div>
+                    <strong style="color:white">{{Message}}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

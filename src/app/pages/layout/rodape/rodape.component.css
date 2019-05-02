@@ -1,0 +1,27 @@
+.ik-layout-footer{
+    background: whitesmoke;
+    left:0;
+    right:0;
+    bottom:0;
+    height:30px;
+    margin:0;
+    padding: 0;
+    border-top:1px solid #eee;
+    transition:all .5s; 
+    overflow: hidden;
+    z-index: 800;
+}
+
+.ik-footer-disclaimer{
+    font-size:92%;
+    display:block;
+    color:#777;
+    line-height:4;
+    text-align: center;
+    margin-top: -12px;
+}
+@media (max-width:700px){
+    .aw-footer-disclaimer{
+        font-size:65%
+    }
+}

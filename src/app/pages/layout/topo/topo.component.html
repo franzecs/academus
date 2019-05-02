@@ -1,0 +1,28 @@
+<div class="ik-topo fixed-top">
+  <nav class="navbar navbar-default" id="main-navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <div class="navbar-brand">
+          <span title="Menu" (click)="controlNavMenu()" data-toggle="tooltip" data-placement="bottom"
+            style="font-size: 14px; text-align: center; vertical-align: top; cursor:pointer">
+            <i class="fas fa-inverse fa-bars"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a routerLink="">
+          <img alt="Designer" src="../../../../assets/img/logo_ac_left.png" title="Home" data-toggle="tooltip"
+            data-placement="bottom" style="margin-top: -6px" />
+        </a>
+      </div>
+
+      <div>
+        <a href=# (click)="logout()" style="margin-left: 20px;" title="Sair" data-toggle="tooltip"
+          data-placement="bottom">
+          <i class="fas fa-sign-out-alt" style="color: white"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+</div>

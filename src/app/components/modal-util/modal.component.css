@@ -1,0 +1,25 @@
+.modal{
+    display: block; 
+    background:rgba(0,0,0,.4);
+    font-weight: bold;
+}
+
+.sucesso, .error, .modal-content{
+    border-radius: 10px;
+    text-align: center;
+}
+
+.sucesso{  
+    background-color: #76cf60d7;
+    color: white;
+}
+
+.error{  
+    background-color: #d34242de;
+    color: white;
+}
+
+.info{
+    background-color: #39d7e2de;
+    color: white;
+}

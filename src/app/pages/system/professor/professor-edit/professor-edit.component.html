@@ -1,0 +1,115 @@
+<div class="card">
+  <div class="page-top sombra">
+    Cadastro de Professor
+    <button class="btn btn-warning btn-pdr btn-sm float-right sombra-btn" (click)="return()"
+      title="voltar"> <i class="fas fa-arrow-circle-left"></i></button>
+  </div>
+  <div class="card-body">
+    <div class="col-xs-12 col-md-12">
+      <div class="row">
+
+        <div class="col-xs-12 col-md-2" *ngIf="professor !== undefined">
+          <img [src]="professor.photo || './../../../../../assets/img/prod.jpg'" class="img-fluid img-thumbnail"
+            style="width: 150px;" />
+        </div>
+
+        <div class="col-xs-12 col-md-8">
+          <form [formGroup]="professorForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+            <div class="col-xs-12">
+              <div class="row">
+
+                <div class="input-group input-group-sm col-xs-12 col-md-3 min-margin-bottom">
+                  <ik-input-group [label]="'Funcional'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="identificador" IkMask="99999-6" />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                  <ik-input-group [label]="'Nome'"></ik-input-group>
+                  <input type="text" class="form-control" formControlName="name" ikUpCase />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-3 min-margin-bottom">
+                  <ik-input-group [label]="'UserName'"></ik-input-group>
+                  <input type="text" class="form-control" maxlength="20" formControlName="username" />
+                </div>
+
+                <div class="input-group input-group-sm col-xs-12 col-md-4 min-margin-bottom">
+                  <ik-input-group [label]="'Graduação'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="graduacao" />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-3 min-margin-bottom">
+                  <ik-input-group [label]="'Titulo'"></ik-input-group>
+                  <select class="form-control" id="faculdade" formControlName="titulacao">
+                    <option value="Especialista">Especialista</option>
+                    <option value="Mestre">Mestre</option>
+                    <option value="Doutor">Doutor</option>
+                    <option value="PHD">PHD</option>
+                  </select>
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-5 min-margin-bottom">
+                  <ik-input-group [label]="'Área'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="area" />
+                </div>
+
+                <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                  <ik-input-group [label]="'E-mail'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="email" [attr.disabled]=true />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                  <ik-input-group [label]="'E-mail 2'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="email2" />
+                </div>
+
+                <div class="input-group input-group-sm col-xs-12 col-md-4 min-margin-bottom">
+                  <ik-input-group [label]="'Fixo'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="fixo" IkMask="(99) 9999-9999" />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-4 min-margin-bottom">
+                  <ik-input-group [label]="'Celular'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="celular" IkMask="(99) 99999-9999" />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-4 min-margin-bottom">
+                  <ik-input-group [label]="'outro'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="outro" IkMask="(99) 99999-9999" />
+                </div>
+
+                <div class="input-group input-group-sm col-xs-12 col-md-12 min-margin-bottom">
+                  <ik-input-group [label]="'Endereço'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="endereco" uppercase />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-3 min-margin-bottom">
+                  <ik-input-group [label]="'CPF'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="cpf" IkMask="999.999.999-53" />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-3 min-margin-bottom">
+                  <ik-input-group [label]="'RG'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="rg" />
+                </div>
+                <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                  <ik-input-group [label]="'Lattes'"></ik-input-group>
+                  <input type="email" class="form-control" formControlName="lattes" />
+                  <a href="{{professor.lattes}}" target="_blanck" *ngIf="professor.lattes !== undefined">
+                    <button type="button" class=" btn btn-sm btn-outline-success pull-right sombra-btn"
+                      title="Curriculo Lattes">
+                      <i class="fas fa-external-link-alt"></i>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <progress-bar *ngIf="uploadProgress" [progress]="uploadProgress"></progress-bar>
+            <input type="file" accept="image/*" (change)="onPhoto($event)" *ngIf="professor !== undefined">
+            <button type="submit" class="btn btn-primary btn-sm sombra-btn"
+              [disabled]="!professorForm.valid">Salvar</button>
+          </form>
+        </div>
+        <div class="col-xs-12 col-md-2" *ngIf="auths.includes(4)">
+          <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+            <ik-input-group [label]="'Authorizações'"></ik-input-group>
+            <app-checkbox-group [options]="userAuth" (toggle)="onRolesChange($event)"></app-checkbox-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <modal-message></modal-message>
+</div>

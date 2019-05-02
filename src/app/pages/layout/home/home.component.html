@@ -1,0 +1,23 @@
+<div id="sidenavMenu" class="sidenav" style="z-index: 100;">
+    <ik-menu [menus]="menus"></ik-menu>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNavMenu()">&times;</a>
+</div>
+
+<div id="main">
+    <div>
+        <app-topo></app-topo>
+    </div>
+
+    <div style="margin: auto">
+      <div class="page">
+        {{message | json}}
+      </div>
+
+        <router-outlet></router-outlet>
+    </div>
+
+    <div>
+        <app-rodape></app-rodape>
+    </div>
+    <modal-message></modal-message>
+</div>

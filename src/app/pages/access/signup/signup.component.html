@@ -1,0 +1,65 @@
+<div class="page card-transparente">
+
+  <div class="card">
+    <div class="page-top sombra">
+      Cadastro de Usuários
+    </div>
+    <div class="card-body">
+
+      <div class="col-xs-12 col-md-12">
+        <div class="row">
+          <div class="col-xs-12 col-md-9">
+
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
+              <div class="col-xs-12">
+                <div class="row">
+
+                  <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                    <ik-input-group [label]="'Name'"></ik-input-group>
+                    <input type="text" class="form-control" formControlName="name" ikUpCase />
+                  </div>
+
+                  <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                    <ik-input-group [label]="'UserName'"></ik-input-group>
+                    <input type="text" class="form-control" formControlName="username" />
+                  </div>
+
+                  <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                    <ik-input-group [label]="'E-mail'"></ik-input-group>
+                    <input type="email" class="form-control" formControlName="email" ikLoCase />
+                  </div>
+
+                  <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                    <ik-input-group [label]="'Password'"></ik-input-group>
+                    <input type="password" class="form-control" formControlName="password" />
+                  </div>
+                  <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+                    <ik-input-group [label]="'Tipo'"></ik-input-group>
+                    <select class="form-control" id="dia" formControlName="tipo">
+                      <option value="administrador">Administrador</option>
+                      <option value="aluno">Aluno</option>
+                      <option value="externo">Externo</option>
+                      <option value="funcionario">Funcionário</option>
+                      <option value="professor">Professor</option>
+                    </select>
+                  </div>
+
+                </div>
+              </div>
+              <hr>
+              <button type="submit" class="btn btn-primary btn-sm sombra-btn"
+                [disabled]="!signupForm.valid">Salvar</button>
+            </form>
+          </div>
+          <div class="col-xs-12 col-md-3">
+            <div class="input-group input-group-sm col-xs-12 col-md-6 min-margin-bottom">
+              <ik-input-group [label]="'Authorizações'"></ik-input-group>
+              <app-checkbox-group [options]="userAuth" (toggle)="onRolesChange($event)"></app-checkbox-group>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <modal-message></modal-message>
+</div>

@@ -1,0 +1,6 @@
+<div *ngFor="let item of options">
+  <label class="container col-md-2"> {{item.label}}
+    <input type="checkbox" [(ngModel)]="item.checked" (change)="onToggle()">
+    <span class="checkmark"></span>
+  </label>
+</div>

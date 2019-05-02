@@ -1,0 +1,463 @@
+/* You can add global styles to this file, and also import other style files */
+
+@charset "UTF-8";
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 14px;
+	background-color: rgba(228, 241, 254, 1.0);
+	overflow: auto;
+}
+
+.bg-padrao {
+  background-image: url(assets/img/bk_academus.webp);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+input.ng-invalid.ng-touched {
+	border: 1px solid #a94442;
+	border-left: 5px solid #a94442;
+}
+
+select.ng-invalid.ng-touched {
+	border: 1px solid #a94442;
+	border-left: 5px solid #a94442;
+}
+
+textarea.ng-invalid.ng-touched {
+	border: 1px solid #a94442;
+	border-left: 5px solid #a94442;
+}
+
+input.ng-valid.ng-touched, .search-bar {
+	border: 1px solid green;
+	border-left: 5px solid #42A948;
+}
+
+select.ng-valid.ng-touched, .search-input {
+	border: 1px solid green;
+	border-left: 5px solid #42A948;
+}
+
+textarea.ng-valid.ng-touched {
+	border: 1px solid green;
+	border-left: 5px solid #42A948;
+}
+
+label.ng-invalid.ng-touched {
+	color: 1px solid #a94442;
+}
+
+label.ng-valid.ng-touched {
+	color: 1px solid green;
+}
+
+label {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.page {
+	margin: 52px auto;
+	padding: 10px;
+	max-width: 90%;
+	border-radius: 5px;
+	background: white;
+	box-sizing: content-box;
+	position: relative;
+	transition: all .5s;
+	overflow: auto;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+}
+
+.page-top {
+	font-size: 1.2rem;
+	font-weight: bold;
+	border-radius: 5px;
+	text-align: center;
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
+	background: rgb(25, 122, 154);
+	/*background-image: linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%);*/
+}
+
+.pt-success {
+	background-image: linear-gradient(to bottom, #5bde6d 0%, #2ad232 100%);
+}
+
+.pt-info {
+	background-image: linear-gradient(to bottom, #ded15b 0%, #cfd22a 100%);
+}
+
+.pt-danger {
+	background-image: linear-gradient(to bottom, #de5b5b 0%, #d22a38 100%);
+}
+
+.pt-warning {
+	background-image: linear-gradient(to bottom, #b55bde 0%, #a22ad2 100%);
+}
+
+.container {
+	max-width: 800px;
+}
+
+.componenteform {
+	padding: 5px;
+}
+
+/***TABELA RESPONSIVA -->***/
+
+.ik-table-col-codigo, .ik-table-col-icons {
+	width: 60px;
+	text-align: center;
+}
+
+td {
+	text-align: justify;
+}
+
+th, tfoot, .faixa {
+	text-align: center;
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
+	background: rgb(25, 122, 154);
+	/*background-image: linear-gradient(to bottom, #5bc0de 0%, #2aabd2 100%);*/
+}
+
+@media only screen and (max-width: 760px), ( min-device-width: 768px) and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+	/* esconder cabeçalho*/
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		border: 1px solid #ccc;
+		text-align: justify;
+	}
+	td {
+		border: none;
+		border-bottom: 1px solid #eee;
+		text-align: justify;
+		position: relative;
+		padding-left: 10px;
+	}
+	td:before {
+		font-weight: bold;
+		padding-right: 20px;
+		font-size: 12px;
+		content: " " attr(data-label) " ";
+	}
+}
+
+/* Smartphones (portrait and landscape) -----------*/
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+	body {
+		padding: 0;
+		margin: 0;
+		width: 320px;
+	}
+}
+
+/* iPads (portrait and landscape) -----------*/
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+	body {
+		width: 495px;
+	}
+}
+
+/***<-- TABELA RESPONSIVA***/
+
+/** CUSTOM SELECT **/
+
+select, select[multiple], input[type="text"], input[type="email"], input[type="password"] {
+	border-color: gray;
+}
+
+select {
+	border-radius: 10px;
+}
+
+select[multiple] {
+	background-color: whitesmoke;
+}
+
+/** CUSTOM SELECT**/
+
+.min-margin-bottom {
+	margin-bottom: 5px;
+}
+
+/** Layout Cards**/
+
+.card, .card-radius, .card-home, .card-transparente, .card-login {
+	background-color: #ffffff;
+	padding: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-style: inset;
+	border-radius: 5px;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+
+.card-radius {
+	border-radius: 10px;
+}
+
+.card-home {
+	margin-top: 150px;
+}
+
+.card-flat {
+	background-color: #ffffff;
+	padding: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-style: outset;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px 0 rgba(130, 130, 130, .3), 0 1px 5px 0 rgba(130, 130, 130, 0.19) !important;
+}
+
+.card-transparente, .card-login {
+	background: rgba(130, 130, 130, .3);
+}
+
+.sombra, .sombra-btn {
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+
+.sombra-btn:hover {
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+.btn-opt {
+	margin-top: 2px;
+	margin-right: 2px;
+	padding: 2px;
+}
+
+.btn-pdr {
+	font-size: 14px;
+	margin: 1px;
+	margin-right: 2px;
+}
+
+.btn-dwn {
+	background-color: blueviolet !important;
+}
+
+.btn-rlt {
+	background-color: chocolate !important;
+	color: white;
+	font-weight: bold;
+}
+
+.search-bar {
+	margin-top: 1px;
+	margin-right: 1px;
+	max-width: 200px;
+	max-height: 28px;
+	font-size: 12px;
+	font-style: italic;
+	color: whitesmoke;
+	border-radius: 30px;
+}
+
+.search-bar:focus {
+	max-width: 200px;
+	transition: 0.8s
+}
+
+.search-input {
+	padding: 0;
+	margin: 1px;
+	height: 28px;
+	border-radius: 30px;
+	font-size: 10px;
+}
+
+.contentChart {
+	height: 100%;
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+}
+
+.spinner {
+	-webkit-animation: rotator 1.4s linear infinite;
+	animation: rotator 1.4s linear infinite;
+}
+
+@-webkit-keyframes rotator {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(270deg);
+		transform: rotate(270deg);
+	}
+}
+
+@keyframes rotator {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(270deg);
+		transform: rotate(270deg);
+	}
+}
+
+.path {
+	stroke-dasharray: 187;
+	stroke-dashoffset: 0;
+	-webkit-transform-origin: center;
+	transform-origin: center;
+	-webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+	animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@-webkit-keyframes colors {
+	0% {
+		stroke: #4285F4;
+	}
+	25% {
+		stroke: #DE3E35;
+	}
+	50% {
+		stroke: #F7C223;
+	}
+	75% {
+		stroke: #1B9A59;
+	}
+	100% {
+		stroke: #4285F4;
+	}
+}
+
+@keyframes colors {
+	0% {
+		stroke: #4285F4;
+	}
+	25% {
+		stroke: #DE3E35;
+	}
+	50% {
+		stroke: #F7C223;
+	}
+	75% {
+		stroke: #1B9A59;
+	}
+	100% {
+		stroke: #4285F4;
+	}
+}
+
+@-webkit-keyframes dash {
+	0% {
+		stroke-dashoffset: 187;
+	}
+	50% {
+		stroke-dashoffset: 46.75;
+		-webkit-transform: rotate(135deg);
+		transform: rotate(135deg);
+	}
+	100% {
+		stroke-dashoffset: 187;
+		-webkit-transform: rotate(450deg);
+		transform: rotate(450deg);
+	}
+}
+
+@keyframes dash {
+	0% {
+		stroke-dashoffset: 187;
+	}
+	50% {
+		stroke-dashoffset: 46.75;
+		-webkit-transform: rotate(135deg);
+		transform: rotate(135deg);
+	}
+	100% {
+		stroke-dashoffset: 187;
+		-webkit-transform: rotate(450deg);
+		transform: rotate(450deg);
+	}
+}
+
+.loader, .loader:before, .loader:after {
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation: load7 1.8s infinite ease-in-out;
+	animation: load7 1.8s infinite ease-in-out;
+}
+
+.loader {
+	color: #ff0000;
+	font-size: 5px;
+	margin: 2px auto;
+	margin-left: 20px;
+	position: relative;
+	text-indent: -9999em;
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
+}
+
+.loader:before, .loader:after {
+	content: '';
+	position: absolute;
+	top: 0;
+}
+
+.loader:before {
+	left: -3.5em;
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
+}
+
+.loader:after {
+	left: 3.5em;
+}
+
+@-webkit-keyframes load7 {
+	0%, 80%, 100% {
+		box-shadow: 0 2.5em 0 -1.3em;
+	}
+	40% {
+		box-shadow: 0 2.5em 0 0;
+	}
+}
+
+@keyframes load7 {
+	0%, 80%, 100% {
+		box-shadow: 0 2.5em 0 -1.3em;
+	}
+	40% {
+		box-shadow: 0 2.5em 0 0;
+	}
+}
