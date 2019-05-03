@@ -30,12 +30,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 const firebase = {
-  apiKey: 'AIzaSyBjDdjd6OkwCZbMJMC-IFWbqA6CfbZfpMs',
-    authDomain: 'faecefafor.firebaseapp.com',
-    databaseURL: 'https://faecefafor.firebaseio.com',
-    projectId: 'faecefafor',
-    storageBucket: 'faecefafor.appspot.com',
-    messagingSenderId: '77247144900'
+  apiKey: '############',
+    authDomain: ''############'.firebaseapp.com',
+    databaseURL: 'https://'############'.firebaseio.com',
+    projectId: ''############'',
+    storageBucket: ''############'.appspot.com',
+    messagingSenderId: ''############''
 };
 
 
